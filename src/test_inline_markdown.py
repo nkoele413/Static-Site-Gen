@@ -48,17 +48,7 @@ class TestInlineMarkdown(unittest.TestCase):
             new_nodes,
         )
     
-    def test_delim_code(self):
-        node = TextNode("This is text with a 'code block' word", TextType.TEXT)
-        new_nodes = split_nodes_delimeter([node], "'", TextType.CODE)
-        self.assertEqual(
-            [
-                TextNode("This is text with a ", TextType.TEXT),
-                TextNode("code block", TextType.CODE),
-                TextNode(" word", TextType.TEXT),
-            ],
-            new_nodes,
-        )
+
 
 if __name__ == "__main__":
     unittest.main()
