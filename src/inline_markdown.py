@@ -7,7 +7,7 @@ def split_nodes_delimeter(old_nodes, delimeter, text_type):
             new_nodes.append(old_node)
             continue
         split_nodes = []
-        sections = old_node.appendix.split(delimeter)
+        sections = old_node.text.split(delimeter)
         if len(sections) % 2 == 0:
             raise ValueError("invalid markdown, formatted section not closed")
         for i in range(len(sections)):
