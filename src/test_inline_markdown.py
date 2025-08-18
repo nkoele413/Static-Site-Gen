@@ -34,15 +34,16 @@ class TestInlineMarkdown(unittest.TestCase):
             ],
             New_nodes,
         )
-
-    def test_delim_italic(self):
-        node = TextNode("This is text with an _italic_ word", TextType.TEXT)
-        new_nodes = split_nodes_delimeter([node], "_", TextType.ITALIC)
+    
+    def test_delim_bold_and_italic(self):
+        node = TextNode("**bold** and _italic_", TextType.TEXT)
+        new_nodes = split_nodes_delimeter([node], "**", TextType.BOLD)
+        new_nodes = split_nodes_delimeter(new_nodes, "_", TextType.ITALIC)
         self.assertEqual(
             [
-                TextNode("This is text with an ", TextType.TEXT),
+                TextNode("bold", TextType.BOLD),
+                TextNode(" and ", TextType.TEXT),
                 TextNode("italic", TextType.ITALIC),
-                TextNode(" word", TextType.TEXT),
             ],
             new_nodes,
         )
