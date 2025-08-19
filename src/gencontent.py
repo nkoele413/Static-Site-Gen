@@ -1,5 +1,6 @@
 import os
-from markdown import makrdown_to_html_node
+from markdown_blocks import markdown_to_html_node
+
 
 def generate_page(from_path, template_path, dest_path):
     print(f" * {from_path} {template_path} -> {dest_path}")
@@ -11,7 +12,7 @@ def generate_page(from_path, template_path, dest_path):
     template = template_file.read()
     template_file.close()
 
-    node = makrdown_to_html_node(markdown_content)
+    node = markdown_to_html_node(markdown_content)
     html = node.to_html()
 
     title = extract_title(markdown_content)
@@ -23,6 +24,7 @@ def generate_page(from_path, template_path, dest_path):
         os.makedirs(dest_dir_path, exist_ok=True)
     to_file = open(dest_path, "w")
     to_file.write(template)
+
 
 def extract_title(md):
     lines = md.split("\n")

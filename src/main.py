@@ -22,9 +22,8 @@ def main():
     generate_page(
         os.path.join(dir_path_content, "index.md"),
         template_path,
-        os.path.join(dir_path_public, "index.html")
+        os.path.join(dir_path_public, "index.html"),
     )
-    
 
 
 main()
